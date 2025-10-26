@@ -12,7 +12,7 @@
 
 <body class="flex flex-col bg-black text-white items-center min-h-screen">
 
-  <header class="mt-auto">
+  <header class="my-6">
     <nav class="flex flex-row justify">
       <a href="index.html" class="mr-6 hover:border-b border-solid border-white">Accueil</a>
       <a href="projects.html" class="mr-6 hover:border-b border-solid border-white">Projets</a>
@@ -21,12 +21,160 @@
     </nav>
   </header>
 
-  
-  
+
+  <!-- Projects container -->
+  <div class="my-auto flex flex-col items-center min-w-[90vw] min-h-[60vh]">
+
+    <!-- Slideshow -->
+    <div class="my-auto flex flex-col items-center min-w-full" data-slideshow="projects">
+
+      <div class="mySlides project-slide hidden min-w-full">
+        <div class="project-card flex flex-col items-center min-w-full border rounded-lg border-gray-700">
+          <div>
+            <a href="https://github.com/jmitchell35/holbertonschool-hbnb"><img class="max-h-full max-w-full"
+                src="./hbnb.png"
+                alt="Page GitHub du projet HBnB. L'image est un lien cliquable vers le repo du projet."></a>
+          </div>
+          <div>
+            <h3>HBnB</h3>
+          </div>
+          <div>
+            <p>Holberton School</p>
+          </div>
+          <div>
+            <p>Printemps 2025 - Toute première application web</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="mySlides project-slide hidden min-w-full">
+        <div class="project-card flex flex-col items-center min-w-full border rounded-lg border-gray-700">
+          <div>
+            <a href="https://github.com/jmitchell35/holbertonschool-portfolio_project"><img class="max-h-full max-w-full"
+                src="./bonappeatit.png"
+                alt="Page GitHub du projet Bon App Eat It. L'image est un lien cliquable vers le repo du projet."></a>
+          </div>
+          <div>
+            <h3>Bon App Eat It</h3>
+          </div>
+          <div>
+            <p>Holberton School</p>
+          </div>
+          <div>
+            <p>Juin 2025 - Projet de fin d'année</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="mySlides project-slide hidden min-w-full">
+        <div class="project-card flex flex-col items-center min-w-full border rounded-lg border-gray-700">
+          <div>
+            <a href="https://github.com/jmitchell35/epitech-job_board"><img class="max-h-full max-w-full "
+                src="./jobboard.png"
+                alt="Page GitHub du projet Epitech Job Board. L'image est un lien cliquable vers le repo du projet."></a>
+          </div>
+          <div>
+            <h3>Job board</h3>
+          </div>
+          <div>
+            <p>Epitech</p>
+          </div>
+          <div>
+            <p>Octobre 2025 - Premier projet d'application web du parcours Pré-MSc</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="mySlides project-slide hidden min-w-full">
+        <div class="project-card flex flex-col items-center min-w-full border rounded-lg border-gray-700">
+          <div>
+            <a href="https://github.com/jmitchell35/digital_resume"><img class="max-h-full max-w-full"
+                src="./digital_resume.png"
+                alt="Page GitHub du projet Epitech digital resume. L'image est un lien cliquable vers le repo du projet."></a>
+          </div>
+          <div>
+            <h3>Digital resume</h3>
+          </div>
+          <div>
+            <p>Epitech</p>
+          </div>
+          <div>
+            <p>Sep 2025 - Premier projet web du parcours Pré-MSc - un CV simple en HTML-CSS-Javascript</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <br>
+
+    <div class="align-center my-[2vh]">
+      <span
+        class="cursor-pointer h-[15px] w-[15px] mx-0.5 bg-white rounded-full inline-block transition-colors duration-500 hover:bg-gray-600 projects-dot"
+        onclick="currentSlide(1, 'projects')"></span>
+      <span
+        class="cursor-pointer h-[15px] w-[15px] mx-0.5 bg-white rounded-full inline-block transition-colors duration-500 hover:bg-gray-600 projects-dot"
+        onclick="currentSlide(2, 'projects')"></span>
+      <span
+        class="cursor-pointer h-[15px] w-[15px] mx-0.5 bg-white rounded-full inline-block transition-colors duration-500 hover:bg-gray-600 projects-dot"
+        onclick="currentSlide(3, 'projects')"></span>
+      <span
+        class="cursor-pointer h-[15px] w-[15px] mx-0.5 bg-white rounded-full inline-block transition-colors duration-500 hover:bg-gray-600 projects-dot"
+        onclick="currentSlide(4, 'projects')"></span>
+    </div>
+
+  </div>
+
+
   <footer class="flex flex-row items-center mt-auto mb-auto">
     <a href="tel:+33628358187" class="hover:underline mr-3">06-28-35-81-87</a>
     <a href="mailto:r8cnhyq67@mozmail.com" class="hover:underline ml-3">r8cnhyq67@mozmail.com</a>
   </footer>
+
+  <script>
+    let slideIndices = {
+      'projects': 1
+    };
+
+    function initSlideshows() {
+      const slideshows = document.querySelectorAll('[data-slideshow]');
+      slideshows.forEach(slideshow => {
+        const slideshowDataAttribute = slideshow.getAttribute('data-slideshow');
+        slideIndices[slideshowDataAttribute] = 1;
+        showSlides(1, slideshowDataAttribute);
+      });
+    }
+
+    function plusSlides(n, slideshowDataAttribute) {
+      showSlides(slideIndices[slideshowDataAttribute] += n, slideshowDataAttribute);
+    }
+
+    function currentSlide(n, slideshowDataAttribute) {
+      showSlides(slideIndices[slideshowDataAttribute] = n, slideshowDataAttribute);
+    }
+
+    function showSlides(n, slideshowDataAttribute) {
+      const slideshow = document.querySelector(`[data-slideshow="${slideshowDataAttribute}"]`);
+      const slides = slideshow.querySelectorAll('.mySlides');
+      const dots = document.querySelectorAll(`.${slideshowDataAttribute}-dot`);
+
+      if (n > slides.length) { slideIndices[slideshowDataAttribute] = 1 }
+      if (n < 1) { slideIndices[slideshowDataAttribute] = slides.length }
+
+      slides.forEach(slide => slide.classList.add("hidden"));
+
+      dots.forEach(dot => {
+        dot.classList.remove("bg-gray-700");
+        dot.classList.add("bg-white");
+      });
+
+      slides[slideIndices[slideshowDataAttribute] - 1].classList.remove("hidden");
+
+      dots[slideIndices[slideshowDataAttribute] - 1].classList.remove("bg-white");
+      dots[slideIndices[slideshowDataAttribute] - 1].classList.add("bg-gray-700");
+    }
+
+    document.addEventListener('DOMContentLoaded', initSlideshows);
+  </script>
 
 </body>
 
